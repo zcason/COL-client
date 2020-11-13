@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-dom';
+import { Route, Switch } from 'react-router-dom';
 import LoginPage from '../../routes/LoginPage/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage/RegistrationPage';
 import HomePage from '../../routes/HomePage/HomePage';
@@ -8,7 +8,7 @@ import CreateEventPage from '../../routes/CreateEventPage/CreateEventPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 
 class App extends Component {
-  state = {}
+  // state = {}
   render() {
     return (
       <div className="App">
@@ -17,17 +17,18 @@ class App extends Component {
           <Switch>
             {/* will be a public route (available to all user) */}
             <Route
-              path={'/login'}
+              exact
+              path={'/'}
               component={LoginPage}
             />
             {/* will be a public route (available to all user) */}
             <Route
-              path={'/registration'}
+              path={'/create-account'}
               component={RegistrationPage}
             />
             {/* will be a private route (available to ONLY logged in users) */}
             <Route
-              path={'/'}
+              path={'/home'}
               component={HomePage}
             />
             {/* will be a private route (available to ONLY logged in users) */}
@@ -35,14 +36,17 @@ class App extends Component {
               path={'/create-event'}
               component={CreateEventPage}
             />
-            {/* will be a private route (available to ONLY logged in users) */}
+            {/* 404 page cannot be found */}
             <Route
               component={NotFoundPage}
             />
+
           </Switch>
         </main>
-      </div>);
+      </div>
+    )
   }
 }
 
 export default App;
+
