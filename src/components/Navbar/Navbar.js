@@ -1,20 +1,21 @@
+import './Navbar.css'
 import React, { Component } from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import { Link } from 'react-router-dom';
 import NavbarItems from './NavbarItems';
 
+
 class Navbar extends Component {
     state = {
         showSidebar: false
     };
 
-    // handleSidebar = () => this.setState({!showSidebar})
 
     handleSidebar = () => {
         this.setState({ showSidebar: !this.state.showSidebar });
         console.log(this.state.showSidebar);
-    }
+    };
 
     render() {
         return (
@@ -47,7 +48,7 @@ class Navbar extends Component {
                 </nav>
             </>
         );
-    }
-}
+    };
+};
 
 export default Navbar;
