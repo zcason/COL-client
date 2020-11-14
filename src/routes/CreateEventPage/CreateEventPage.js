@@ -5,7 +5,9 @@ class CreateEventPage extends Component {
     state = {}
     render() {
         return (
-            <div></div>
+            <div>
+                <h2>Create Event</h2>
+            </div>
         );
     }
 }
