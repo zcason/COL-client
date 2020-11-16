@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 class ProfilePage extends Component {
@@ -6,6 +7,7 @@ class ProfilePage extends Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <h2>Profile</h2>
             </div>
         );

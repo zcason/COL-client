@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
+import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
+import './LoginForm.css';
 
 class LoginForm extends Component {
-    state = {}
+    static defualtProps = {
+        onLoginSuccess: () => { }
+    };
+
+    state = { error: null };
+
+    handleLoginAuth = event => {
+        event.preventDefault();
+        const { user_email, password } = event.target;
+
+        TokenService.saveAuthToken(
+            TokenService.makeBasicAuthToken(user_email.value, password.value)
+        );
+
+        user_email.value = '';
+        password.value = '';
+        this.props.onLoginSuccess()
+    }
+
     render() {
         return (
-            <form>
-                <div className='user_name'>
+            <form className='LoginForm' onSubmit={this.handleLoginAuth}>
+                <div role='alert'>
+                    {this.state.error && <p className='red'>{this.state.error}</p>}
+                </div>
+                <div className='user_email'>
                     <label htmlFor='LoginForm__email'>
                         Email
                     </label>

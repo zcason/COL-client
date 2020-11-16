@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 
 
 class HomePage extends Component {
@@ -6,6 +7,7 @@ class HomePage extends Component {
     render() {
         return (
             <div className='home-page'>
+                <Navbar />
                 <h2>COL</h2>
             </div>
         );

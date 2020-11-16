@@ -4,6 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import { Link } from 'react-router-dom';
 import NavbarItems from './NavbarItems';
+import TokenService from '../../services/token-service';
 
 
 class Navbar extends Component {
@@ -11,6 +12,9 @@ class Navbar extends Component {
         showSidebar: false
     };
 
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken()
+    };
 
     handleSidebar = () => {
         this.setState({ showSidebar: !this.state.showSidebar });
@@ -44,6 +48,11 @@ class Navbar extends Component {
                             );
                         })
                         }
+                        <li className='nav-text'>
+                            <Link to='/' onClick={this.handleLogoutClick}>
+                                Logout
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </>

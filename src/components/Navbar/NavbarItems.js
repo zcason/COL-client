@@ -16,11 +16,6 @@ const NavbarItems = [
         title: 'Create Event',
         path: '/create-event',
         itemClass: 'nav-text'
-    },
-    {
-        title: 'Logout',
-        path: '/',
-        itemClass: 'nav-text'
     }
 ]
 
