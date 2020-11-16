@@ -26,7 +26,7 @@ class Navbar extends Component {
                     </Link>
                 </div>
                 <nav className={this.state.showSidebar ? 'nav-menu active' : 'nav-menu'}>
-                    <ul className='nav-menu-items'>
+                    <ul className='nav-menu-items' onClick={this.handleSidebar}>
                         <li className='navbar-toggle'>
                             <Link to='#' className='menu-bars'>
                                 <MdIcons.MdClose />
