@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
 import './LoginForm.css';
@@ -12,15 +13,22 @@ class LoginForm extends Component {
 
     handleLoginAuth = event => {
         event.preventDefault();
-        const { user_email, password } = event.target;
+        this.setState({ error: null })
+        const { login_email, login_password } = event.target;
 
-        TokenService.saveAuthToken(
-            TokenService.makeBasicAuthToken(user_email.value, password.value)
-        );
-
-        user_email.value = '';
-        password.value = '';
-        this.props.onLoginSuccess()
+        AuthApiService.postLogin({
+            login_email: login_email.value,
+            login_password: login_password.value
+        })
+            .then(res => {
+                login_email.value = ''
+                login_password.value = ''
+                TokenService.saveAuthToken(res.authToken)
+                this.props.onLoginSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render() {
@@ -30,24 +38,24 @@ class LoginForm extends Component {
                     {this.state.error && <p className='red'>{this.state.error}</p>}
                 </div>
                 <div className='user_email'>
-                    <label htmlFor='LoginForm__email'>
+                    <label htmlFor='login_email'>
                         Email
                     </label>
                     <Input
                         required
                         name='email'
-                        id='LoginForm__email'>
+                        id='login_email'>
                     </Input>
                 </div>
                 <div className='password'>
-                    <label htmlFor='LoginForm__password'>
+                    <label htmlFor='login_password'>
                         Password
                         </label>
                     <Input
                         required
                         name='password'
                         type='password'
-                        id='LoginForm__password'>
+                        id='login_password'>
                     </Input>
                     <Button type='submit'>
                         Login
