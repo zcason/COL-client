@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import moment from 'moment';
 import './Calendar.css';
 import EventList from '../../components/EventList/EventList';
@@ -95,27 +94,13 @@ class Calendar extends Component {
                 </div>
                 <EventList />
 
-=======
-
-class Calendar extends Component {
-    state = {}
-    render() {
-        return (
-            <>
-                <p>Calendar</p>
->>>>>>> 32bbb8be73265cd7c7bafd225aa87165f08c766c
             </>
         );
     }
 }
-<<<<<<< HEAD
 export default Calendar;
 
 
 
 
 
-=======
-
-export default Calendar;
->>>>>>> 32bbb8be73265cd7c7bafd225aa87165f08c766c
