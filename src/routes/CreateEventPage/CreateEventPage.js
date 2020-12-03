@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+import Navbar from '../../components/Navbar/Navbar';
+>>>>>>> 32bbb8be73265cd7c7bafd225aa87165f08c766c
 
 =======
 import Navbar from '../../components/Navbar/Navbar';
@@ -12,6 +16,7 @@ class CreateEventPage extends Component {
         return (
 <<<<<<< Updated upstream
             <div>
+                <Navbar />
                 <h2>Create Event</h2>
             </div>
 =======

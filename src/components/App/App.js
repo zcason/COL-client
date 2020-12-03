@@ -7,41 +7,50 @@ import HomePage from '../../routes/HomePage/HomePage';
 import ProfilePage from '../../routes/ProfilePage/ProfilePage';
 import CreateEventPage from '../../routes/CreateEventPage/CreateEventPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
-import Navbar from '../Navbar/Navbar';
+import PublicOnlyRoute from '../Utils/PrivateRoute';
+import PrivateRoute from '../Utils/PublicRoute';
 
 class App extends Component {
-  // state = {}
+  state = { hasError: false }
+
+  static getDerividStateFromError(error) {
+    console.error(error)
+    return { hasError: true }
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header"></header>
+        <header className="App-header">
+          <h2>COL</h2>
+        </header>
         <main className="App-main">
-          <Navbar />
+          {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <div className='center'>
             <Switch>
               {/* will be a public route (available to all user) */}
-              <Route
+              <PublicOnlyRoute
                 exact
                 path={'/'}
                 component={LoginPage}
               />
               {/* will be a public route (available to all user) */}
-              <Route
+              <PublicOnlyRoute
                 path={'/create-account'}
                 component={RegistrationPage}
               />
               {/* will be a private route (available to ONLY logged in users) */}
-              <Route
+              <PrivateRoute
                 path={'/home'}
                 component={HomePage}
               />
               {/* will be a private route (available to ONLY logged in users) */}
-              <Route
+              <PrivateRoute
                 path={'/profile'}
                 component={ProfilePage}
               />
               {/* will be a private route (available to ONLY logged in users) */}
-              <Route
+              <PrivateRoute
                 path={'/create-event'}
                 component={CreateEventPage}
               />

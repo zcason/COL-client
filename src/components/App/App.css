@@ -1,13 +1,22 @@
-.center {
-  text-align: center;
-}
-
-
 * {
   margin: 0;
   padding: 0;
 }
 
+.App-header{
+  background-color: darkslateblue;
+  color:white;
+  text-align: center;
+}
+
+ .center {
+   text-align: center;
+}
+
+
+.red {
+  color: red;
+}
 
 
 
