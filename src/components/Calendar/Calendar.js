@@ -25,6 +25,11 @@ class Calendar extends Component {
         return firstDay;
     }
 
+    // find the current day
+    getCurrentDay = () => {
+        return this.state.dateObject.format("D");
+    };
+
 
     render() {
         // creates a row with the days of the week 
@@ -78,6 +83,8 @@ class Calendar extends Component {
         let daysinmonth = rows.map((d, i) => {
             return <tr>{d}</tr>
         });
+
+
 
         return (
             <>
