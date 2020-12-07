@@ -21,35 +21,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h2>COL</h2>
-        </header>
+        <header></header>
         <main className="App-main">
           {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <div className='center'>
             <Switch>
-              {/* will be a public route (available to all user) */}
               <PublicOnlyRoute
                 exact
                 path={'/'}
                 component={LoginPage}
               />
-              {/* will be a public route (available to all user) */}
               <PublicOnlyRoute
                 path={'/create-account'}
                 component={RegistrationPage}
               />
-              {/* will be a private route (available to ONLY logged in users) */}
               <PrivateRoute
                 path={'/home'}
                 component={HomePage}
               />
-              {/* will be a private route (available to ONLY logged in users) */}
               <PrivateRoute
                 path={'/profile'}
                 component={ProfilePage}
               />
-              {/* will be a private route (available to ONLY logged in users) */}
               <PrivateRoute
                 path={'/create-event'}
                 component={CreateEventPage}

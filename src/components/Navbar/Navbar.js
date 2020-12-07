@@ -28,6 +28,7 @@ class Navbar extends Component {
                     <Link to='#' className='menu-bars'>
                         <FaIcons.FaBars onClick={this.handleSidebar} />
                     </Link>
+                    <h2 className="app-title">COL</h2>
                 </div>
                 <nav className={this.state.showSidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={this.handleSidebar}>
