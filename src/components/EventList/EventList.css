@@ -1,0 +1,90 @@
+.event-list-title {
+    padding-top: 2rem;
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+
+}
+
+.event-list {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    display: block;
+    justify-content: center;
+    list-style: none;
+}
+
+.event {
+    width: 50%;
+    height: auto;
+    color: white; 
+    background-color: darkslateblue;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.icon-row {
+ display: flex;
+ margin-left: 22px;
+ padding: 10px 0;
+}
+
+.icon {
+    font-size: 25px;
+}
+
+.icon:hover {
+    color: darksalmon;
+}
+
+.title-date-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 5px 20px;
+    padding: 10px 0;
+}
+.title-date-row p {
+    font-size: 18px;
+}
+
+.event-description {
+    background-color: white;
+    color: black;
+    height: auto;
+    width: 80%;
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    font-size: 12px;
+    white-space: normal;
+
+}
+
+textarea {
+    width: 60%;
+    margin: 10px 0;
+}
+
+.buttons-row {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+}
+
+.buttons-row button {
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+    font-size: 18px;  
+    background-color: white;
+    color :darkslateblue;
+    border-style: none;
+    border-radius: 15px;
+}
+
+.buttons-row button:hover {
+    background-color: darksalmon;
+    color: white;
+}

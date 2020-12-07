@@ -18,7 +18,6 @@ class Navbar extends Component {
 
     handleSidebar = () => {
         this.setState({ showSidebar: !this.state.showSidebar });
-        console.log(this.state.showSidebar);
     };
 
     render() {

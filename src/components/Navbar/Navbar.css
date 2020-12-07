@@ -17,9 +17,10 @@
     font-size: 48px;
     font-weight: 200;
     color: white;
-    margin-left: 45%;
-    margin-right: 55%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 .nav-menu {
     background-color: darkslateblue;
