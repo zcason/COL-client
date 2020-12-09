@@ -13,7 +13,8 @@ class Calendar extends Component {
         dateObject: moment(),
         allmonths: moment.months(),
         showYearNav: false,
-        selectedDay: null
+        selectedDay: null,
+        events: [],
     };
 
     // days of the month 
@@ -64,52 +65,6 @@ class Calendar extends Component {
         });
     };
 
-    // handler for the month table
-    MonthList = props => {
-        let months = [];
-        // eslint-disable-next-line array-callback-return
-        props.data.map(data => {
-            months.push(
-                <td
-                    key={data}
-                    className="calendar-month"
-                    onClick={e => {
-                        this.setMonth(data);
-                    }}
-                >
-                    <div>{data}</div>
-                </td>
-            );
-        });
-        let rows = [];
-        let cells = [];
-
-        months.forEach((row, i) => {
-            if (i % 3 !== 0 || i === 0) {
-                cells.push(row);
-            } else {
-                rows.push(cells);
-                cells = [];
-                cells.push(row);
-            }
-        });
-        rows.push(cells);
-        let monthlist = rows.map((d, i) => {
-            return <tr>{d}</tr>;
-        });
-
-        return (
-            <table className="calendar-month">
-                <thead>
-                    <tr>
-                        <th colSpan="4">Select a Month</th>
-                    </tr>
-                </thead>
-                <tbody>{monthlist}</tbody>
-            </table>
-        );
-    };
-
     showYearEditor = () => {
         this.setState({
             showYearNav: true,
@@ -118,25 +73,30 @@ class Calendar extends Component {
     };
 
     onPrev = () => {
-        let curr = "";
-        if (this.state.showMonthTable === true) {
-            curr = "year";
+        let curr = "month";
+        // Check for edge case (when the month is january)
+        const selectedMonth = this.state.dateObject.month() - 1;
+        const currentMonth = (new Date()).getMonth()
+        if (selectedMonth === currentMonth) {
+            // set a variable to the current day for filter
         } else {
-            curr = "month";
+            // set variable to the first of the month 
         }
         this.setState({
             dateObject: this.state.dateObject.subtract(1, curr)
         });
     };
     onNext = () => {
-        let curr = "";
-        if (this.state.showMonthTable === true) {
-            curr = "year";
+        let curr = "month";
+        const selectedMonth = this.state.dateObject.month() - 1;
+        const currentMonth = (new Date()).getMonth()
+        if (selectedMonth === currentMonth) {
+            // set a variable to the current day for filter
         } else {
-            curr = "month";
+            // set variable to the first of the month 
         }
         this.setState({
-            dateObject: this.state.dateObject.add(1, curr)
+            dateObject: this.state.dateObject.add(1, curr),
         });
     };
     setYear = year => {
@@ -163,58 +123,8 @@ class Calendar extends Component {
         }
         return dateArray;
     }
-    YearTable = props => {
-        let months = [];
-        let nextten = moment()
-            .set("year", props)
-            .add("year", 12)
-            .format("Y");
 
-        let tenyear = this.getDates(props, nextten);
-
-        // eslint-disable-next-line array-callback-return
-        tenyear.map(data => {
-            months.push(
-                <td
-                    key={data}
-                    className="calendar-month"
-                    onClick={e => {
-                        this.setYear(data);
-                    }}
-                >
-                    <span>{data}</span>
-                </td>
-            );
-        });
-        let rows = [];
-        let cells = [];
-
-        months.forEach((row, i) => {
-            if (i % 3 !== 0 || i === 0) {
-                cells.push(row);
-            } else {
-                rows.push(cells);
-                cells = [];
-                cells.push(row);
-            }
-        });
-        rows.push(cells);
-        let yearlist = rows.map((d, i) => {
-            return <tr>{d}</tr>;
-        });
-
-        return (
-            <table className="calendar-month">
-                <thead>
-                    <tr>
-                        <th colSpan="4">Select a Year</th>
-                    </tr>
-                </thead>
-                <tbody>{yearlist}</tbody>
-            </table>
-        );
-    };
-
+    // get request for selected day 
     onDayClick = (e, d) => {
         this.setState(
             {
@@ -237,9 +147,20 @@ class Calendar extends Component {
         }
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            let currentDay = d === this.currentDay() ? "today" : "";
+            // let currentDay = () => d === this.currentDay() ? "today" : "";
+            // let showCurrentDay = "";
+            // if (d === this.currentDay()) {
+            //     console.log("hello")
+            //     showCurrentDay = "today";
+            // }
+            // ${showCurrentDay}
+            console.log(d)
+            console.log(this.currentDay())
+            if (this.currentDay() === d) {
+                console.log('found')
+            }
             daysInMonth.push(
-                <td key={d} className={`calendar-day ${currentDay}`}>
+                <td key={d} className={`calendar-day `}>
                     <span
                         onClick={e => {
                             this.onDayClick(e, d);
@@ -285,9 +206,6 @@ class Calendar extends Component {
                             />
                             {!this.state.showMonthTable && !this.state.showYearEditor && (
                                 <span
-                                    onClick={e => {
-                                        this.showMonth();
-                                    }}
                                     className="calendar-label"
                                 >
                                     {this.month()}
@@ -295,9 +213,6 @@ class Calendar extends Component {
                             )}
                             <span
                                 className="calendar-label"
-                                onClick={e => {
-                                    this.showYearEditor();
-                                }}
                             >
                                 {this.year()}
                             </span>

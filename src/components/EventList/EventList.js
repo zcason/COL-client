@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './EventList.css';
-import * as BoxIcon from "react-icons/bi";
+import * as BoxIcon from 'react-icons/bi';
+// import axios from 'axios';
+// import ReactPaginate from 'react-paginate';
 
 
 class EventList extends Component {
     state = {
-        // for full view conditonal rendering
         isExpanded: false,
-        // for editing conditonal (nest inside of full view conditon)
-        isEditing: false
+        isEditing: false,
     };
 
     expandeView = () => {
@@ -53,6 +53,9 @@ class EventList extends Component {
                 </div>}
             </div>
         </li>;
+
+        // Pagination
+
 
         return (
 

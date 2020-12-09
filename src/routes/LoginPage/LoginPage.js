@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import moment from 'moment';
+
 
 class LoginPage extends Component {
     static defaultProps = {
@@ -11,8 +13,12 @@ class LoginPage extends Component {
     }
 
     handleLoginSuccess = () => {
-        const { location, history } = this.props
-        const destination = (location.state || {}).from || '/home'
+        const m = moment();
+        const startOfCurrentMonth = m.startOf('month').format('YYYY-MM-DD')
+        const endOfCurrentMonth = m.endOf('month').format('YYYY-MM-DD')
+
+        const { history } = this.props
+        const destination = `/home/${startOfCurrentMonth}/${endOfCurrentMonth}`
         history.push(destination)
     }
 

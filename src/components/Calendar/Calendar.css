@@ -71,9 +71,6 @@
     padding: 0 0 5px 0;
     font-size: 22px;
   }
-  .tail-datetime-calendar .calendar-navi span:hover {
-    background-color: rgba(0, 0, 0, 0.15);
-  }
   .tail-datetime-calendar .calendar-navi span.button-prev {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgNiAxNiI+PHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTYgMkwwIDhsNiA2VjJ6Ii8+PC9zdmc+");
   }
@@ -138,12 +135,12 @@
     border-radius: 50%;
     -webkit-border-radius: 50%;
   }
-  .tail-datetime-calendar .calendar-date table tbody tr > *.today {
+  .tail-datetime-calendar .calendar-date table tbody tr .calendar-day > *.today {
     color: #3296c8;
   }
-  /* .tail-datetime-calendar .calendar-date table tbody tr > *.today:after {
+  .tail-datetime-calendar .calendar-date table tbody tr > *.today:after {
     border-color: #3296c8;
-  } */
+  }
   .tail-datetime-calendar .calendar-date table tbody tr > *:hover {
     color: #cd283c;
   }

@@ -36,7 +36,7 @@ class App extends Component {
                 component={RegistrationPage}
               />
               <PrivateRoute
-                path={'/home'}
+                path={'/home/:begin_date/:end_date'}
                 component={HomePage}
               />
               <PrivateRoute
