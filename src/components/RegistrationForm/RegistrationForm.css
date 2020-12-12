@@ -1,19 +1,20 @@
+.back-to-login {
+    display: flex;
+    padding: 10px 0 0 15px;
+}
+
 .error {
     color:black;
     margin-bottom: 5px;
 }
 
-.login {
+ .sign-up{
     color: white;
     padding-top: 15%;
     font-size: 40px;
 }
 
-.user_email {
-    margin-bottom: 10px;
-}
-
-.LoginForm {
+ .RegistrationForm {
     width: 300px;
     margin-top: 30px;
     margin-left: auto;
@@ -25,8 +26,8 @@
     font-weight: 500;
 }
 
-.LoginForm button {
-    margin-top: 15px;
+.RegistrationForm button {
+    margin-top: 20px;
     background-color: darkslateblue;
     color: white;
     height: 25px;
@@ -35,6 +36,3 @@
     border-style: none;
 }
 
-.sign-up-link {
-    margin-top: 15px;
-}

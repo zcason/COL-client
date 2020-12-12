@@ -1,12 +1,16 @@
 import TokenService from './token-service';
 import config from '../config';
 
-const colApiService = {
+const colApiServices = {
 
-    getEvents(date) {
-        return fetch(`${config.API_ENDPOINT}/home/${date.year}/${date.month}`, {
+    getEvents(beginDate, endDate) {
+        return fetch(`${config.API_ENDPOINT}/home/${beginDate}/${endDate}`, {
             headers: { 'authorization': `bearer ${TokenService.getAuthToken()}` }
         })
+            .then(res => (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
     },
     editEvents(date, updatedEvent) {
         return fetch(`${config.API_ENDPOINT}/home/${date}`, {
@@ -27,4 +31,4 @@ const colApiService = {
 
 }
 
-export default colApiService;
+export default colApiServices;

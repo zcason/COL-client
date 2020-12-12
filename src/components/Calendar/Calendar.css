@@ -135,7 +135,7 @@
     border-radius: 50%;
     -webkit-border-radius: 50%;
   }
-  .tail-datetime-calendar .calendar-date table tbody tr .calendar-day > *.today {
+  .tail-datetime-calendar .calendar-date table tbody tr > *.today {
     color: #3296c8;
   }
   .tail-datetime-calendar .calendar-date table tbody tr > *.today:after {

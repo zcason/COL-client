@@ -15,7 +15,7 @@
 }
 
 .event {
-    width: 50%;
+    width: 70%;
     height: auto;
     color: white; 
     background-color: darkslateblue;
@@ -28,7 +28,7 @@
 
 .icon-row {
  display: flex;
- margin-left: 22px;
+ margin-left: 16px;
  padding: 10px 0;
 }
 

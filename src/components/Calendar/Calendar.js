@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import './Calendar.css';
 import EventList from '../../components/EventList/EventList';
-
+import colApiServices from '../../services/col-api-service'
 
 class Calendar extends Component {
     weekdayshort = moment.weekdaysShort();
@@ -16,6 +16,27 @@ class Calendar extends Component {
         selectedDay: null,
         events: [],
     };
+
+    getEventsByMonth = (month) => {
+        const begin_date = month.startOf('month').format('YYYY-MM-DD');
+        const end_date = month.endOf('month').format('YYYY-MM-DD');
+
+        colApiServices.getEvents(begin_date, end_date)
+            .then(usersEvents => this.setState({ events: usersEvents }));
+
+        if (month.startOf('month').format() === moment().startOf('month').format()) {
+            this.setState({ dateObject: moment() });
+        } else {
+            this.setState({ dateObject: month.startOf('month') });
+        }
+    }
+
+    componentDidMount() {
+        const today = moment();
+
+        this.getEventsByMonth(today)
+    }
+
 
     // days of the month 
     daysInMonth = () => {
@@ -74,30 +95,23 @@ class Calendar extends Component {
 
     onPrev = () => {
         let curr = "month";
-        // Check for edge case (when the month is january)
-        const selectedMonth = this.state.dateObject.month() - 1;
-        const currentMonth = (new Date()).getMonth()
-        if (selectedMonth === currentMonth) {
-            // set a variable to the current day for filter
-        } else {
-            // set variable to the first of the month 
-        }
+        const { dateObject } = this.state;
+
         this.setState({
-            dateObject: this.state.dateObject.subtract(1, curr)
+            dateObject: dateObject.subtract(1, curr),
         });
+
+        this.getEventsByMonth(dateObject);
     };
     onNext = () => {
         let curr = "month";
-        const selectedMonth = this.state.dateObject.month() - 1;
-        const currentMonth = (new Date()).getMonth()
-        if (selectedMonth === currentMonth) {
-            // set a variable to the current day for filter
-        } else {
-            // set variable to the first of the month 
-        }
+        const { dateObject } = this.state;
+
         this.setState({
             dateObject: this.state.dateObject.add(1, curr),
         });
+
+        this.getEventsByMonth(dateObject);
     };
     setYear = year => {
         let dateObject = Object.assign({}, this.state.dateObject);
@@ -132,6 +146,9 @@ class Calendar extends Component {
             },
             () => {
                 console.log("SELECTED DAY: ", this.state.selectedDay);
+                // const firstEvent = this.state.events[0];
+                // const eventDate = moment(firstEvent.event_date).format('MMMM Do YYYY, h:mm a')
+                // console.log(`date: ${eventDate}`)
             }
         );
     };
@@ -147,20 +164,10 @@ class Calendar extends Component {
         }
         let daysInMonth = [];
         for (let d = 1; d <= this.daysInMonth(); d++) {
-            // let currentDay = () => d === this.currentDay() ? "today" : "";
-            // let showCurrentDay = "";
-            // if (d === this.currentDay()) {
-            //     console.log("hello")
-            //     showCurrentDay = "today";
-            // }
-            // ${showCurrentDay}
-            console.log(d)
-            console.log(this.currentDay())
-            if (this.currentDay() === d) {
-                console.log('found')
-            }
+            // eslint-disable-next-line eqeqeq
+            let showCurrentDay = d == this.currentDay() ? "today" : "";
             daysInMonth.push(
-                <td key={d} className={`calendar-day `}>
+                <td key={d} className={`calendar-day  ${showCurrentDay}`}>
                     <span
                         onClick={e => {
                             this.onDayClick(e, d);
@@ -243,7 +250,7 @@ class Calendar extends Component {
                         )}
                     </div>
                 </div>
-                <EventList />
+                <EventList events={this.state.events} />
             </>
         );
     }

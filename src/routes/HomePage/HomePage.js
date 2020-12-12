@@ -5,8 +5,6 @@ import '../Route.css';
 
 
 class HomePage extends Component {
-    state = {}
-
     render() {
         return (
             <div className='background-color'>

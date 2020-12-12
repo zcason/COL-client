@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import AuthApiService from '../../services/auth-api-service';
 import TokenService from '../../services/token-service';
 import { Button, Input } from '../Utils/Utils';
@@ -13,7 +14,7 @@ class LoginForm extends Component {
 
     handleLoginAuth = event => {
         event.preventDefault();
-        this.setState({ error: null })
+        this.setState({ error: null });
         const { login_email, login_password } = event.target;
 
         AuthApiService.postLogin({
@@ -33,35 +34,41 @@ class LoginForm extends Component {
 
     render() {
         return (
-            <form className='LoginForm' onSubmit={this.handleLoginAuth}>
-                <div role='alert'>
-                    {this.state.error && <p className='red'>{this.state.error}</p>}
-                </div>
-                <div className='user_email'>
-                    <label htmlFor='login_email'>
-                        Email
+            <>
+                <h2 className="login">Login</h2>
+                <form className='LoginForm' onSubmit={this.handleLoginAuth}>
+                    <div role='alert'>
+                        {this.state.error && <p className='error'>{this.state.error}</p>}
+                    </div>
+                    <div className='user_email'>
+                        <label htmlFor='login_email'>
+                            Email
                     </label>
-                    <Input
-                        required
-                        name='email'
-                        id='login_email'>
-                    </Input>
-                </div>
-                <div className='password'>
-                    <label htmlFor='login_password'>
-                        Password
+                        <Input
+                            required
+                            name='email'
+                            id='login_email'>
+                        </Input>
+                    </div>
+                    <div className='password'>
+                        <label htmlFor='login_password'>
+                            Password
                         </label>
-                    <Input
-                        required
-                        name='password'
-                        type='password'
-                        id='login_password'>
-                    </Input>
+                        <Input
+                            required
+                            name='password'
+                            type='password'
+                            id='login_password'>
+                        </Input>
+                    </div>
                     <Button type='submit'>
                         Login
                     </Button>
-                </div>
-            </form>
+                    <div className="sign-up-link">
+                        <p>Not a member? <Link to='/create-account'>Create an account</Link></p>
+                    </div>
+                </form>
+            </>
         );
     }
 }
