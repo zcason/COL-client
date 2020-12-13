@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import CreateEventForm from '../../components/CreateEventForm/CreateEventForm';
 import Navbar from '../../components/Navbar/Navbar';
 import '../Route.css';
 
@@ -10,7 +10,7 @@ class CreateEventPage extends Component {
         return (
             <div className='background-color'>
                 <Navbar />
-                <h2 style={{ color: "white" }}>Create Event</h2>
+                <CreateEventForm />
             </div >
         );
     }

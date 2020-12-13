@@ -1,0 +1,38 @@
+.profile-title {
+    color: white;
+    margin-top: 15%;
+}
+
+.profile-card {
+    width: 300px;
+    height: auto;
+    margin: 20px auto 0 auto;
+    padding: 20px 0 30px 0;
+    background-color: darkslateblue;
+    border-radius: 12px;
+}
+
+.profile-card button {
+    width: 75px;
+    height: 25px;
+    background-color: white;
+    color: darkslateblue;
+    border-radius: 12px;
+    border-style: none;
+}
+
+.profile-card button:hover {
+    background-color: darksalmon;
+    color: white;
+}
+
+.user-info {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.user-info p {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}

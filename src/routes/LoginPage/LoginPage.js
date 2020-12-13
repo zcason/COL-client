@@ -16,8 +16,8 @@ class LoginPage extends Component {
         const startOfCurrentMonth = m.startOf('month').format('YYYY-MM-DD')
         const endOfCurrentMonth = m.endOf('month').format('YYYY-MM-DD')
 
-        const { history } = this.props
-        const destination = `/home/${startOfCurrentMonth}/${endOfCurrentMonth}`
+        const { history } = this.props;
+        const destination = `/home/${startOfCurrentMonth}/${endOfCurrentMonth}`;
         history.push(destination)
     }
 

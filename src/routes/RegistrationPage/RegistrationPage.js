@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import TokenService from '../../services/token-service';
 import '../Route.css';
 
 
@@ -11,6 +12,7 @@ class RegistrationPage extends Component {
     }
 
     handleRegistrationSuccess = user => {
+        TokenService.clearAuthToken();
         const { history } = this.props
         history.push('/')
     }

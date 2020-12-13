@@ -53,7 +53,7 @@ class EventList extends Component {
                 <div>
                     {(isExpanded && !isEditing) &&
                         <p className="event-description">
-                            {!event.event_desc ? 'This event has no description.' : event.event_desc}
+                            {event.event_desc}
                         </p>}
                     {(isEditing && isExpanded) && <textarea></textarea>}
                     {isExpanded && <div className="buttons-row">

@@ -1,0 +1,54 @@
+.wasCreated {
+    color:black;
+    margin-bottom: 5px;
+}
+
+.error {
+    color:black;
+    margin-bottom: 5px;
+}
+
+.create-event-title {
+margin-top: 15%;
+ color: white;   
+}
+
+.EventForm {
+    width: 300px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+    border-radius: 12px;
+    background-color:darkslateblue;
+    color: white;
+    font-weight: 500;
+}
+
+.EventForm .event_title {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 8px auto;
+}
+
+.date_picker{
+    width:auto;
+    background-color: white;
+}
+
+.submit-create button {
+    margin-top: 15px;
+    background-color: white;
+    color: darkslateblue;
+    height: auto;
+    width: auto;
+    padding: 15px;
+    border-radius: 30px;
+    border-style: none;
+}
+
+.submit-create button:hover {
+    background-color: darksalmon;
+    color: darkslateblue;
+}

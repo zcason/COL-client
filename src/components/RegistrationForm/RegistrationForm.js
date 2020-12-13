@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Input, Required } from '../Utils/Utils';
 import AuthApiService from '../../services/auth-api-service';
 import { Link } from 'react-router-dom';
-import * as IoIcons from "react-icons/io";
 import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
@@ -23,10 +22,6 @@ class RegistrationForm extends Component {
             password: password.value
         })
             .then(user => {
-                user.first_name.value = '';
-                user.full_name.value = '';
-                user.email.value = '';
-                user.password.value = '';
                 this.props.onRegistrationSuccess();
             })
             .catch(res => {
