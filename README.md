@@ -1,71 +1,103 @@
-# Getting Started with Create React App
+# COL App
+COL or Cognitive Off-Loader allows users to create calendar events with a date, title, and details for the scheduled event.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+### 1. Working Prototype
+You can access a working prototype of the React app here:  and Node app here: 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 2. User Story
 
-### `npm test`
+###### Cover Page
+* As a visitor
+* I want to understand what this app entails to make a decision if I want to use it
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###### Login Page
+* As a returning register user
+* I want to enter my email and password to use this app, so I can have access to my account.
 
-### `npm run build`
+###### Sign Up/Registration Page
+* As a visitor
+* I want to register to use this app so I can create a personal account.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###### My Home Page
+* As a logged-in user,
+* I can see the current month on the calendar component and the events I have already bookmarked for that month listed below. If I click a specific day the on calendar component the list of events change to show events bookmarked only for that specific day.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+###### My Profile Page
+* As a logged-in user,
+* I can see my account information (name and email), and if I want to delete my account I can hit the delete button to do so.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###### Create Event Page
+* As a logged-in user,
+* I can create events to be scheduled on the day I choose, with a title, and a brief description or note for the event.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. Screenshots
+Cover Page
+:-------------------------:
+![Cover Page](/screenshot-images/Cover-Page.png)
+Login Page
+![Login Page](/screenshot-images/Login-Page.png)
+Sign Up/Registration Page
+![Sign Up/Registration Page](/screenshot-images/Sign-Up-Page.png)
+Home Page
+![Home Page](/screenshot-images/Home-Page.png)
+Proflie Page
+![Profile Page](/screenshot-images/Profile-Page.png)
+Event Page
+![Event Page](/screenshot-images/Event-Page.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+### 4. API Documentation
+API Documentation details:
+* GET All Events by Month
+    * `https://nomnoms-app.herokuapp.com/api/home/:beginningOfMonth:endOfMonth`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* GET Profile
+    * `https://nomnoms-app.herokuapp.com/api/profile`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* POST Event
+    * `https://nomnoms-app.herokuapp.com/api/create-event`
+        * JSON body
+        *   { "Title": "Lunch with Client", "event_desc": "Bring Pitch Material ", "event_date": 2013-03-01T00:00:00+01:00, 
+            }
 
-### Code Splitting
+* POST User
+    * `https://nomnoms-app.herokuapp.com/api/create-account`
+        * JSON body
+        *   { "full_name": "John Doe", "email": "john.doe3@gmail.com", "password": "Password123!" }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* DELETE Event
+    * `https://nomnoms-app.herokuapp.com/api/home/:event_id`
 
-### Analyzing the Bundle Size
+* DELETE Profile
+    * `https://nomnoms-app.herokuapp.com/api/profile/:user_id`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### 5. Technology
+* Front-End: HTML5, CSS3, JavaScript ES6, React
+* Back-End: Node.js, Express.js, Mocha, Chai, PostgreSQL 
+* Development Environment: Vercel, Heroku
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### 6. How to run it
+Use command line to navigate into the project folder and run the following in terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##### Local React scripts
+* To install the react project ===> npm install
+* To run react (on port 3000) ===> npm start
+* To run tests ===> npm run test
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# COL-client
+##### Local Node scripts
+* To install the node project ===> npm install
+* To migrate the database ===> npm run migrate 
+* To run Node server (on port 8000) ===> npm run dev
+* To run tests ===> npm run test
