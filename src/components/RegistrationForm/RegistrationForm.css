@@ -1,6 +1,12 @@
 .back-to-login {
     display: flex;
     padding: 10px 0 0 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.back-to-login:hover {
+    color: darkslateblue;
 }
 
 .error {

@@ -9,6 +9,7 @@ import CreateEventPage from '../../routes/CreateEventPage/CreateEventPage';
 import NotFoundPage from '../../routes/NotFoundPage/NotFoundPage';
 import PublicOnlyRoute from '../Utils/PrivateRoute';
 import PrivateRoute from '../Utils/PublicRoute';
+import CoverPage from '../../routes/CoverPage/CoverPage';
 
 class App extends Component {
   state = { hasError: false }
@@ -29,6 +30,10 @@ class App extends Component {
               <PublicOnlyRoute
                 exact
                 path={'/'}
+                component={CoverPage}
+              />
+              <PublicOnlyRoute
+                path={'/login'}
                 component={LoginPage}
               />
               <PublicOnlyRoute

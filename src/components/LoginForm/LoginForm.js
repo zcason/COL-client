@@ -35,6 +35,7 @@ class LoginForm extends Component {
     render() {
         return (
             <>
+                <Link to={'/'} className='back-to-cover'>Back to cover page</Link>
                 <h2 className="login">Login</h2>
                 <form className='LoginForm' onSubmit={this.handleLoginAuth}>
                     <div role='alert'>

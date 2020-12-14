@@ -32,7 +32,7 @@ class RegistrationForm extends Component {
     render() {
         return (
             <>
-                <Link to='/' className='back-to-login'><p>Back to login</p></Link>
+                <Link to='/login' className='back-to-login'><p>Back to login</p></Link>
                 <h2 className="sign-up">Sign Up</h2>
                 <form
                     className='RegistrationForm'

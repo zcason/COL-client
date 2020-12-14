@@ -1,3 +1,14 @@
+.back-to-cover {
+    display: flex;
+    padding: 10px 0 0 15px;
+    color: white;
+    font-weight: 500;
+}
+
+.back-to-cover:hover {
+    color: darkslateblue;
+}
+
 .error {
     color:black;
     margin-bottom: 5px;

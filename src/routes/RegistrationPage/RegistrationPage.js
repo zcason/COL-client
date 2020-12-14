@@ -14,7 +14,7 @@ class RegistrationPage extends Component {
     handleRegistrationSuccess = user => {
         TokenService.clearAuthToken();
         const { history } = this.props
-        history.push('/')
+        history.push('/login')
     }
 
     render() {
