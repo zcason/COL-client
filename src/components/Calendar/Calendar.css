@@ -136,6 +136,15 @@
     border-radius: 50%;
     -webkit-border-radius: 50%;
   }
+
+  #has-event {
+    color: #3296c8;
+  }
+
+  #has-event:hover {
+    color: #cd283c;
+  }
+
   .tail-datetime-calendar .calendar-date table tbody tr > *.today {
     color: #3296c8;
   }

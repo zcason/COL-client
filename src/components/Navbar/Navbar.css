@@ -13,14 +13,23 @@
     background: none; 
 }
 
+.title-link {
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    padding-right: 60px;
+
+}
+
 .app-title {
     font-size: 48px;
     font-weight: 200;
     color: white;
-    margin-left: auto;
-    margin-right: auto;
 }
 
+.app-title:hover {
+    color: darksalmon;
+}
 
 .nav-menu {
     background-color: darkslateblue;
@@ -32,6 +41,7 @@
     top: 0;
     left: -100%;
     transition: 850ms;
+    z-index: 11;
 }
 
 .nav-menu.active {

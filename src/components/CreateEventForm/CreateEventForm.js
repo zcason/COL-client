@@ -33,14 +33,13 @@ class CreateEventCard extends Component {
             event_date: moment(eventDate).format()
         })
             .then(event => {
-                console.log(event)
                 this.setState({
                     wasCreated: true,
                     eventDate: new Date()
                 });
 
-                event_title.value = " ";
-                event_desc.value = " "
+                event_title.value = "";
+                event_desc.value = "";
             })
             .catch(res => {
                 this.setState({ error: res.error })

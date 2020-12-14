@@ -4,6 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import * as MdIcons from "react-icons/md";
 import { Link } from 'react-router-dom';
 import NavbarItems from './NavbarItems';
+import moment from 'moment';
 import TokenService from '../../services/token-service';
 
 
@@ -21,13 +22,19 @@ class Navbar extends Component {
     };
 
     render() {
+        const begin_date = moment().startOf('month').format('YYYY-MM-DD');
+        const end_date = moment().endOf('month').format('YYYY-MM-DD');
+
+
         return (
             <>
                 <div className='navbar'>
                     <Link to='#' className='menu-bars'>
                         <FaIcons.FaBars onClick={this.handleSidebar} />
                     </Link>
-                    <h2 className="app-title">COL</h2>
+                    <Link to={`/home/${begin_date}/${end_date}`} className='title-link'>
+                        <h2 className="app-title">COL</h2>
+                    </Link>
                 </div>
                 <nav className={this.state.showSidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={this.handleSidebar}>

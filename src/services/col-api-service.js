@@ -27,19 +27,13 @@ const colApiServices = {
                     : res.json()
             )
     },
-    editEvent(date, updatedEvent) {
-        return fetch(`${config.API_ENDPOINT}/home/${date}`, {
-            method: 'PUT',
+    deleteEvent(eventId) {
+        return fetch(`${config.API_ENDPOINT}/home/${eventId}`, {
+            method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
                 'authorization': `bearer ${TokenService.getAuthToken()}`
             },
-            body: JSON.stringify({
-                id: updatedEvent.id,
-                title: updatedEvent.title,
-                event_desc: updatedEvent.desc,
-                event_date: updatedEvent.date
-            })
         })
     },
     getUsersInfo() {

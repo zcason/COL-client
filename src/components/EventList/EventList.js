@@ -1,44 +1,48 @@
 import React, { Component } from 'react';
+import colApiServices from '../../services/col-api-service';
 import './EventList.css';
 import * as MdIcon from 'react-icons/md';
 import moment from 'moment';
-// import axios from 'axios';
-// import ReactPaginate from 'react-paginate';
+import _ from 'lodash';
+import { paginate } from '../Utils/paginate';
+
 
 
 class EventList extends Component {
     state = {
         isExpanded: null,
-        isEditing: false,
-        // perPage: 3,
+        pageSize: 3,
+        currentPage: 1
     };
 
-    expandeView = (eventId) => {
+    expandeView = eventId => {
         this.setState({ isExpanded: eventId })
     }
     collapseView = () => {
         this.setState({
             isExpanded: null,
-            isEditing: false
         })
     }
 
-    editHandler = () => {
-        this.setState({ isEditing: true })
+    onDeleteEvent = (id) => {
+        colApiServices.deleteEvent(id)
+            .then(r => { this.props.onDelete(id) })
+            .catch(e => {
+                throw new Error(`Error deleting folder: ${e.message}`);
+            });
     }
 
-    submitPatch = () => {
-        // below create a patch request and set isEditing to false
-
-        this.setState({ isEditing: null })
+    onPageChange = page => {
+        this.setState({ currentPage: page });
     }
-
     render() {
-        const { isEditing } = this.state;
+        const { pageSize, currentPage } = this.state;
+        const { events } = this.props;
+        const { onPageChange, onDeleteEvent } = this;
+        const paginatedEvents = paginate(events, currentPage, pageSize);
 
-        // create a filtered list that returns the events on that date
 
-        const eventItems = this.props.events.map(event => {
+        const eventItems = paginatedEvents.map(event => {
             const isExpanded = this.state.isExpanded === event.id;
             return <li key={event.id} className="event">
 
@@ -51,31 +55,38 @@ class EventList extends Component {
                     <p>{moment(event.event_date).format('MMMM Do YYYY, h:mm a')}</p>
                 </div>
                 <div>
-                    {(isExpanded && !isEditing) &&
+                    {isExpanded &&
                         <p className="event-description">
                             {event.event_desc}
                         </p>}
-                    {(isEditing && isExpanded) && <textarea></textarea>}
                     {isExpanded && <div className="buttons-row">
-                        {!isEditing && <button onClick={this.editHandler}>Edit</button>}
-                        {isEditing && <button onClick={this.submitPatch}>Submit</button>}
-                        <button>Delete</button>
+                        <button onClick={() => onDeleteEvent(event.id)}>Delete</button>
                     </div>}
                 </div>
             </li>
         });
 
-        // Pagination
+        // Pagination for events 
+        const eventsCount = events.length;
+        const pageCount = Math.ceil(eventsCount / pageSize);
+        const pages = _.range(1, pageCount + 1);
+        const Pagination = pages.map(page => {
+            return <div key={page} className={page === currentPage ? "page-number-active" : "page-number"} onClick={() => onPageChange(page)}>
+                <p>{page}</p>
+            </div>
+        });
 
 
         return (
-
             <>
                 <h3 className="event-list-title">Events</h3>
                 <ul className="event-list">
-                    {this.props.events.length > 0 ? eventItems : ""}
+                    {events.length > 0 ? eventItems : ""}
                 </ul>
                 {this.props.events.length < 1 && <div>There are no events scheduled.</div>}
+                { pageCount > 1 && <div className="paginator">
+                    {Pagination}
+                </div>}
             </>
         );
     }
