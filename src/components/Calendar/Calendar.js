@@ -3,6 +3,7 @@ import moment from 'moment';
 import './Calendar.css';
 import EventList from '../../components/EventList/EventList';
 import colApiServices from '../../services/col-api-service';
+import { v4 as uuidv4 } from 'uuid';
 
 class Calendar extends Component {
     weekdayshort = moment.weekdaysShort();
@@ -211,7 +212,7 @@ class Calendar extends Component {
         });
 
         let daysinmonth = rows.map((d, i) => {
-            return <tr>{d}</tr>;
+            return <tr key={uuidv4()}>{d}</tr>;
         });
 
         return (
@@ -251,7 +252,7 @@ class Calendar extends Component {
                                 <thead>
                                     <tr>{weekdayshortname}</tr>
                                 </thead>
-                                <tbody>{daysinmonth}</tbody>
+                                <tbody >{daysinmonth}</tbody>
                             </table>
                         </div>
                     </div>

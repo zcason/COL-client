@@ -1,7 +1,7 @@
-import App from './App';
+import Calendar from './Calendar';
 
 import { shallow } from 'enzyme';
 
 it('renders without crashing', () => {
-  shallow(<App />);
+    shallow(<Calendar />);
 });
