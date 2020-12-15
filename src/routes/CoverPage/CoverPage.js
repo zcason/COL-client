@@ -31,7 +31,7 @@ class CoverPage extends Component {
                         <Link to={'/create-account'}>
                             <button>Register</button>
                         </Link>
-                        <p>COL isn't just for the busy! Any one can join!</p>
+                        <p>COL isn't just for the busy! Anyone can join!</p>
                     </div>
                 </div>
                 <div />
