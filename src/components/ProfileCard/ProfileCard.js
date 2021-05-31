@@ -9,7 +9,9 @@ class ProfileCard extends Component {
     state = {
         userName: "",
         userEmail: "",
-        accountDeleted: false
+        accountDeleted: false,
+        addingNumber: false,
+        phoneNumber: null,
     }
 
     componentDidMount() {
@@ -29,7 +31,9 @@ class ProfileCard extends Component {
     }
 
     render() {
-        const { userName, userEmail, accountDeleted } = this.state;
+        const { userName, userEmail, accountDeleted, addingNumber, phoneNumber} = this.state;
+
+
         return (
             <>
                 { accountDeleted && (<Redirect to={'/'} />)}
@@ -38,8 +42,12 @@ class ProfileCard extends Component {
                     <div className="user-info">
                         <p>{userName}</p>
                         <p>{userEmail}</p>
+                    </div >
+                    {}
+                    <div className="profile-buttons">
+                        <button onClick={console.log('added')}>Add Phone Number</button>
+                        <button onClick={this.handleDeleteProfile}>Delete</button>
                     </div>
-                    <button onClick={this.handleDeleteProfile}>Delete</button>
                 </div>
             </>
         );
