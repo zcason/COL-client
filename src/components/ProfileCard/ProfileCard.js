@@ -11,7 +11,7 @@ class ProfileCard extends Component {
         userEmail: "",
         accountDeleted: false,
         addingNumber: false,
-        phoneNumber: null,
+        phoneNumber: null
     }
 
     componentDidMount() {
@@ -20,6 +20,10 @@ class ProfileCard extends Component {
                 userName: userInfo.full_name,
                 userEmail: userInfo.email
             }))
+    }
+
+    handleAddNumber = (event) => {
+        this.setState({ addingNumber: true})
     }
 
     handleDeleteProfile = (event) => {
@@ -45,7 +49,7 @@ class ProfileCard extends Component {
                     </div >
                     {}
                     <div className="profile-buttons">
-                        <button onClick={console.log('added')}>Add Phone Number</button>
+                        <button onClick={this.handleAddNumber}>Add Phone Number</button>
                         <button onClick={this.handleDeleteProfile}>Delete</button>
                     </div>
                 </div>
