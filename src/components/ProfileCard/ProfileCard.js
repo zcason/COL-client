@@ -38,6 +38,24 @@ class ProfileCard extends Component {
         }
     }
 
+    handleSubmitNumber = (event) => {
+        event.preventDefault();
+
+        this.setState({
+            addingNumber: false,
+            phoneNumber: 123567890
+        });
+        // console.log(`Submited: ${this.state.phoneNumber}`)
+    }
+
+    handleDeleteNumber = (event) => {
+        event.preventDefault();
+
+        this.setState({
+            phoneNumber: null
+        })
+        // console.log('deleted number')
+    }
     handleDeleteProfile = (event) => {
         event.preventDefault();
 
@@ -63,7 +81,7 @@ class ProfileCard extends Component {
                         required
                     />
                 </div>
-            }
+            };
 
         const numberButtons = () => {
             if (!phoneNumber && addingNumber === false) {
@@ -73,7 +91,7 @@ class ProfileCard extends Component {
                 return <button onClick={this.handleSubmitNumber}>Submit</button>
             }
             if (phoneNumber && addingNumber === false) {
-                <button onClick={this.handleDeleteNumber}>Delete</button>
+                return <button onClick={this.handleDeleteNumber}>Delete Phone Number</button>
             }
         };
 
