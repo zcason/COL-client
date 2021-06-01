@@ -11,6 +11,20 @@
   background-color: darkslateblue;
   border-radius: 12px;
 }
+
+.phone-number-box {
+  margin-bottom: 20px;
+}
+
+.phone-number-box p {
+  color: white;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+}
+
 .profile-buttons {
   display: flex;
   justify-content: space-around;
