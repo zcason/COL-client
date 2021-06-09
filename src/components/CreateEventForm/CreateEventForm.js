@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Input } from '../Utils/Utils';
 import DateTimePicker from 'react-datetime-picker';
 import colApiServices from '../../services/col-api-service'
-import moment from 'moment';
 import './CreateEventForm.css';
 
 
@@ -30,7 +29,7 @@ class CreateEventCard extends Component {
         colApiServices.postEvent({
             title: event_title.value,
             event_desc: event_desc.value,
-            event_date: moment(eventDate).format()
+            event_date: eventDate
         })
             .then(event => {
                 this.setState({
