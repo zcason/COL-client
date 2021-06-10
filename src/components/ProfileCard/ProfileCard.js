@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import colApiServices from '../../services/col-api-service';
 import TokenService from '../../services/token-service';
-import { Input } from '../Utils/Utils';
+// import { Input } from '../Utils/Utils';
 import './ProfileCard.css';
 
 
@@ -28,34 +28,34 @@ class ProfileCard extends Component {
         this.setState({ addingNumber: true})
     }
 
-    handleNumberValidation = (phone) => {
-        const phoneNumber = parseInt(phone);
+    // handleNumberValidation = (phone) => {
+    //     const phoneNumber = parseInt(phone);
 
-        if (!Number.isInteger(phoneNumber)) {
-            this.setState({errorMessage: "Phone number should only contain number."})
-        } else {
-            this.setState({ errorMessage: null})
-        }
-    }
+    //     if (!Number.isInteger(phoneNumber)) {
+    //         this.setState({errorMessage: "Phone number should only contain number."})
+    //     } else {
+    //         this.setState({ errorMessage: null})
+    //     }
+    // }
 
-    handleSubmitNumber = (event) => {
-        event.preventDefault();
+    // handleSubmitNumber = (event) => {
+    //     event.preventDefault();
 
-        this.setState({
-            addingNumber: false,
-            phoneNumber: 123567890
-        });
-        // console.log(`Submited: ${this.state.phoneNumber}`)
-    }
+    //     this.setState({
+    //         addingNumber: false,
+    //         phoneNumber: 123567890
+    //     });
+    //     // console.log(`Submited: ${this.state.phoneNumber}`)
+    // }
 
-    handleDeleteNumber = (event) => {
-        event.preventDefault();
+    // handleDeleteNumber = (event) => {
+    //     event.preventDefault();
 
-        this.setState({
-            phoneNumber: null
-        })
-        // console.log('deleted number')
-    }
+    //     this.setState({
+    //         phoneNumber: null
+    //     })
+    //     // console.log('deleted number')
+    // }
     handleDeleteProfile = (event) => {
         event.preventDefault();
 
@@ -65,35 +65,37 @@ class ProfileCard extends Component {
     }
 
     render() {
-        const { userName, userEmail, accountDeleted, addingNumber, phoneNumber, errorMessage } = this.state;
+        const { userName, userEmail, accountDeleted, 
+            // addingNumber, phoneNumber, errorMessage 
+        } = this.state;
 
-        const phoneNumberInput = () => {
-            return <div className='phone-number-box'>
-                    <p>Phone Number:</p>
-                    <Input
-                        onChange={e => this.handleNumberValidation(e.target.value)}
-                        name='phone_number'
-                        id='phone_number'
-                        placeholder="Enter phone number"
-                        type='text'
-                        minLength='10'
-                        maxLength='10'
-                        required
-                    />
-                </div>
-            };
+        // const phoneNumberInput = () => {
+        //     return <div className='phone-number-box'>
+        //             <p>Phone Number:</p>
+        //             <Input
+        //                 onChange={e => this.handleNumberValidation(e.target.value)}
+        //                 name='phone_number'
+        //                 id='phone_number'
+        //                 placeholder="Enter phone number"
+        //                 type='text'
+        //                 minLength='10'
+        //                 maxLength='10'
+        //                 required
+        //             />
+        //         </div>
+        //     };
 
-        const numberButtons = () => {
-            if (!phoneNumber && addingNumber === false) {
-               return <button onClick={this.handleAddNumber}>Add Phone Number</button>
-            }
-            if (!phoneNumber && addingNumber === true) {
-                return <button onClick={this.handleSubmitNumber}>Submit</button>
-            }
-            if (phoneNumber && addingNumber === false) {
-                return <button onClick={this.handleDeleteNumber}>Delete Phone Number</button>
-            }
-        };
+        // const numberButtons = () => {
+        //     if (!phoneNumber && addingNumber === false) {
+        //        return <button onClick={this.handleAddNumber}>Add Phone Number</button>
+        //     }
+        //     if (!phoneNumber && addingNumber === true) {
+        //         return <button onClick={this.handleSubmitNumber}>Submit</button>
+        //     }
+        //     if (phoneNumber && addingNumber === false) {
+        //         return <button onClick={this.handleDeleteNumber}>Delete Phone Number</button>
+        //     }
+        // };
 
         return (
             <>
@@ -104,10 +106,10 @@ class ProfileCard extends Component {
                         <p>{userName}</p>
                         <p>{userEmail}</p>
                     </div >
-                    {addingNumber && phoneNumberInput()}
-                    {errorMessage && <p className="error-message">{errorMessage}</p> }
+                    {/* {addingNumber && phoneNumberInput()}
+                    {errorMessage && <p className="error-message">{errorMessage}</p> } */}
                     <div className='profile-buttons'>
-                        {numberButtons()}
+                        {/* {numberButtons()} */}
                         <button onClick={this.handleDeleteProfile}>Delete</button>
                     </div>
                 </div>
