@@ -18,21 +18,25 @@ class ProfileCard extends Component {
 
     componentDidMount() {
         colApiServices.getUsersInfo()
-            .then(userInfo => this.setState({
-                userName: userInfo.full_name,
-                userEmail: userInfo.email
-            }))
+            .then(userInfo => {
+                if (userInfo.users_number) this.setState({ phoneNumber: userInfo.users_number });
+                this.setState({
+                    userName: userInfo.full_name,
+                    userEmail: userInfo.email,
+                })
+            })
+            
     }
 
     handleAddNumber = (event) => {
-        this.setState({ addingNumber: true})
+        this.setState({ addingNumber: true })
     }
 
     handleNumberValidation = (phone) => {
         const phoneNumber = parseInt(phone);
 
         if (!Number.isInteger(phoneNumber)) {
-            this.setState({errorMessage: "Phone number should only contain number."})
+            this.setState({errorMessage: "Phone number should only contain numbers."})
         } else {
             this.setState({ errorMessage: null})
         }
@@ -40,12 +44,23 @@ class ProfileCard extends Component {
 
     handleSubmitNumber = (event) => {
         event.preventDefault();
+        const inputValue = document.getElementById("phone_number").value;
 
-        this.setState({
-            addingNumber: false,
-            phoneNumber: 123567890
-        });
-        // console.log(`Submited: ${this.state.phoneNumber}`)
+        if (inputValue.length !== 10){
+            this.setState({errorMessage: "Phone number should be 10 characters long."})
+        } else {
+            const number = parseInt(inputValue);
+            colApiServices.postPhoneNumber({users_number: number}).then(res => {
+                this.setState({
+                    addingNumber: false,
+                    phoneNumber: res.users_number,
+                    errorMessage: false
+                });
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
+        }
     }
 
     handleDeleteNumber = (event) => {
@@ -103,6 +118,7 @@ class ProfileCard extends Component {
                     <div className='user-info'>
                         <p>{userName}</p>
                         <p>{userEmail}</p>
+                        {phoneNumber && <p>{phoneNumber}</p>}
                     </div >
                     {addingNumber && phoneNumberInput()}
                     {errorMessage && <p className="error-message">{errorMessage}</p> }
