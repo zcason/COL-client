@@ -69,7 +69,15 @@ const colApiServices = {
                     : res.json()
             )
     },
-
+    deletePhoneNumber() {
+        return fetch(`${config.API_ENDPOINT}/profile/number`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${TokenService.getAuthToken()}`
+            },
+        })
+    }
 }
 
 export default colApiServices;

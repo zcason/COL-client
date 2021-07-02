@@ -65,12 +65,10 @@ class ProfileCard extends Component {
 
     handleDeleteNumber = (event) => {
         event.preventDefault();
-
-        this.setState({
-            phoneNumber: null
-        })
-        // console.log('deleted number')
+        colApiServices.deletePhoneNumber()
+        this.setState({ phoneNumber: null })
     }
+
     handleDeleteProfile = (event) => {
         event.preventDefault();
 
